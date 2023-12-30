@@ -113,5 +113,40 @@
   ![delete](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/a5b9597b-91b2-4e24-86ac-0cb35a3d9289)
 
 
+##  Deploy-a-sample-app via MiniKube on GCP 
+
+ - All the above process is same part from installation
+ -  install docker & minikube
+   ![1](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/021601f1-4b48-4b41-9289-52c61e157177)
+   ![2](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/836809e8-0f56-45c8-8049-59b270092f8a)
+   ![3](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/99db0725-e5e4-46aa-b3d9-32eef69c363b)
+   ![4](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/3dd22bd3-e2fe-466b-82ad-f5f39d7438d7)
+   [5](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/924bf378-3884-4959-9d24-09cb3997f134)
+   ![6](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/34ce2da8-6197-4dc8-9a25-b216f2bca5ae)
+   ![7](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/8c86fa00-ee8b-4ffa-841e-c0d759cb6127)
+   ![8](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/65bd5e95-5a40-410b-9f19-2b30fa12634f)
+   ![9](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/77f06356-d9c0-44cd-bd04-050c0465e00e)
+   ![10](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/9948484b-a939-41d0-9c7f-24d62370698e)
+   ![11](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/58b9ccf3-d8c9-40f2-b3d3-2ec049538437)
+   ![12](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/c8f37f2b-9916-4a01-99b7-e087cdd24525)
+   ![13](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/e07e33fe-e967-4603-b474-e844b57104c7)
+   ![14](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/49537c3c-53fe-4286-97a1-f2b5bd340c0e)
+   ![15](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/f195f84c-a1b5-4026-893b-cde180a5e475)
+   ![16](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/76a09c0d-0e1f-4273-b442-b7d17126c74e)
+   ![17](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/48c75a58-86a0-4fb4-9495-6716e0559767)
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
 
                                                 ****
