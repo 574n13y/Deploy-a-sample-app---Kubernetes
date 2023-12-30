@@ -85,6 +85,11 @@
   ![describe pods 1](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/3805412f-8527-42d0-aba6-4ea99a1e8979)
   ![describe pods 2](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/eacd135f-3922-49db-a0ba-6bf61578a3a8)
 
+- describe pod and app
+  ```
+  kubectl get pods -l app=sample-app
+  ```
+  
 - describe pod apps 1,2,3
   ```
   kubectl describe pod sample-app-587d9c6687-2gk8r
