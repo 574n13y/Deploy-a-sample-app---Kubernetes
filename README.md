@@ -145,7 +145,7 @@
    ```
    alias kubectl="minikube kubectl --"
    ```
-   [5](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/924bf378-3884-4959-9d24-09cb3997f134)
+   ![5](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/924bf378-3884-4959-9d24-09cb3997f134)
    
    ```
    minikube dashboard
