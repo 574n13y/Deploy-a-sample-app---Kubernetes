@@ -117,34 +117,133 @@
 
  - All the above process is same part from installation
  -  install docker & minikube
+ -  install the latest minikube stable release on x86-64 Linux using Debian package: [minikube]()
+   ```
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+    sudo dpkg -i minikube_latest_amd64.deb
+   ```
+
    ![1](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/021601f1-4b48-4b41-9289-52c61e157177)
+
+  - From a terminal with administrator access (but not logged in as root), run:
+   ```
+   minikube start
+   ```
    ![2](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/836809e8-0f56-45c8-8049-59b270092f8a)
+
+ - Interact with your cluster
+   ```
+   kubectl get po -A
+   ```
    ![3](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/99db0725-e5e4-46aa-b3d9-32eef69c363b)
+
+   ```
+   minikube kubectl -- get po -A
+   ```
    ![4](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/3dd22bd3-e2fe-466b-82ad-f5f39d7438d7)
+
+   ```
+   alias kubectl="minikube kubectl --"
+   ```
    [5](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/924bf378-3884-4959-9d24-09cb3997f134)
+   
+   ```
+   minikube dashboard
+   ```    
    ![6](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/34ce2da8-6197-4dc8-9a25-b216f2bca5ae)
    ![7](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/8c86fa00-ee8b-4ffa-841e-c0d759cb6127)
-   ![8](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/65bd5e95-5a40-410b-9f19-2b30fa12634f)
-   ![9](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/77f06356-d9c0-44cd-bd04-050c0465e00e)
-   ![10](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/9948484b-a939-41d0-9c7f-24d62370698e)
-   ![11](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/58b9ccf3-d8c9-40f2-b3d3-2ec049538437)
-   ![12](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/c8f37f2b-9916-4a01-99b7-e087cdd24525)
-   ![13](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/e07e33fe-e967-4603-b474-e844b57104c7)
-   ![14](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/49537c3c-53fe-4286-97a1-f2b5bd340c0e)
-   ![15](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/f195f84c-a1b5-4026-893b-cde180a5e475)
-   ![16](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/76a09c0d-0e1f-4273-b442-b7d17126c74e)
-   ![17](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/48c75a58-86a0-4fb4-9495-6716e0559767)
 
+  - Deploy applications
+  - Create a sample deployment and expose it on port 8080:
+    ```
+    kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+    kubectl expose deployment hello-minikube --type=NodePort --port=8080
+    ```
+                     *OR(We have deployed two applications named as hello-minikubes & sample-app)*
+  - open vi write a kubernetes file.
+  ```
+  yaml
+  # deployment.yaml
 
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sample-app
+  spec:
+    replicas: 3  # Adjust the number of replicas based on your high availability requirements
+    selector:
+      matchLabels:
+        app: sample-app
+    template:
+      metadata:
+        labels:
+          app: sample-app
+       spec:
+         containers:
+          - name: sample-app
+          image: nginx:latest  # Replace with your desired publicly available app image
+          ports:
+          - containerPort: 80
+     strategy:
+       rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
+         type: RollingUpdate
 
-
-
-
-
-
-
-
- 
+  ```
+  - Apply the YAML file using the kubectl apply command:
+    ```
+    kubectl apply -f deployment.yaml
+    ```
+     ![8](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/65bd5e95-5a40-410b-9f19-2b30fa12634f)
+    
+  - It may take a moment, but your deployment will soon show up when you run:
+    ```
+    kubectl get services
+    ```
+    ![10](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/9948484b-a939-41d0-9c7f-24d62370698e)
+    ![11](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/58b9ccf3-d8c9-40f2-b3d3-2ec049538437)
+    ![12](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/c8f37f2b-9916-4a01-99b7-e087cdd24525)
+    ![13](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/e07e33fe-e967-4603-b474-e844b57104c7)
+    ![14](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/49537c3c-53fe-4286-97a1-f2b5bd340c0e)
+    ![15](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/f195f84c-a1b5-4026-893b-cde180a5e475)
+    
+  - The easiest way to access this service is to let minikube launch a web browser for you:
+    ```
+    minikube service --all
+    ```    
+    ![9](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/77f06356-d9c0-44cd-bd04-050c0465e00e)
+    
+  - Validation
+    ![16](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/76a09c0d-0e1f-4273-b442-b7d17126c74e)
+    
+  - manage your cluster
+  - Pause Kubernetes without impacting deployed applications:
+    ```
+    minikube pause
+    ```
+    
+  - Unpause a paused instance:
+    ```
+    minikube unpause
+    ```
+    
+  - Halt the cluster:/ stop
+    ```
+    minikube stop
+    ```
+     - Browse the catalog of easily installed Kubernetes services:
+    ```
+    minikube addons list
+    ```
+    
+  - Create a second cluster running an older Kubernetes release:
+    ```
+    minikube start -p aged --kubernetes-version=v1.16.1
+    ```
+    
+  - Delete Deployments - Delete all of the minikube clusters:
+    ![17](https://github.com/574n13y/Deploy-a-sample-app---Kubernetes/assets/35293085/48c75a58-86a0-4fb4-9495-6716e0559767)
 
  
 
